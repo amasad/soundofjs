@@ -14,10 +14,17 @@
         right: 0;
         top: 50px;
       }
+      textarea {
+        height: 100%;
+        width: 500px;
+      }
+      html,body {
+        height: 100%;
+      }
     </style>
   </head>
   <body>
-    <pre><code>define([
+    <textarea>define([
   "./var/arr",
   "./var/slice",
   "./var/concat",
@@ -110,9 +117,9 @@ jQuery.fn = jQuery.prototype = {
 }
 
 return jQuery;
-});</code></pre>
+});</textarea>
     <menu label="edit">
-      <button>play</button>
+      <button class="play">play</button>
     </menu>
     <script src="howler.js"></script>
     <script src="bundle.js"></script>
