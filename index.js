@@ -3,9 +3,27 @@ var $ = require('jquery-browserify');
 var playNodeSound = require('./sounds');
 
 var worker = new Worker('worker-parser-bundle.js');
-// ideally https://www.youtube.com/watch?v=sBg4h_GEhfk
-function play () {
-  var code = $('textarea').val();
+
+$textarea = $('textarea');
+$(window).focus(function () {
+  $textarea.focus();
+});
+$('body').click(function () {
+  $textarea.focus();
+})
+$textarea.focus();
+
+$textarea.on('paste', function (e) {
+  setTimeout(function () {
+    onPaste($textarea.val());
+  }, 0);
+});
+
+var ast = null;
+var path = null;
+
+function onPaste(code) {
+  console.log(code)
   var $code = $('<code/>');
   var $line = $('<div/>');
 
@@ -20,12 +38,20 @@ function play () {
         }))
     );
   });
+  $textarea.replaceWith($code);
 
   worker.onmessage = function (e) {
-    var path = e.data.path;
-    var ast = e.data.ast;
-    var types = recast.types.namedTypes;
+    path = e.data.path;
+    ast = e.data.ast;
+  };
 
+  worker.postMessage(code);
+}
+
+// ideally https://www.youtube.com/watch?v=sBg4h_GEhfk
+function play () {
+    var types = recast.types.namedTypes;
+    var $code = $('code');
     path.forEach(function (n) {
       var $start = $code.find('.loc-' + n.loc.start.line).find('.col-' + n.loc.start.column);
       var $end = $code.find('.loc-' + n.loc.end.line).find('.col-' + n.loc.end.column);
@@ -47,8 +73,6 @@ function play () {
         el.classList.add(n.type);
       }
     });
-
-    $('textarea').replaceWith($code);
 
     var i = 0;
     var lastLine = null;
@@ -76,9 +100,7 @@ function play () {
       }, 300 * i);
     });
 
-  }
-
-  worker.postMessage(code);
+  
 }
 
 $('button').click(play);

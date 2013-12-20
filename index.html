@@ -2,7 +2,9 @@
 
 <html>
   <head>
+    <link rel="stylesheet" href="normalize.css" />
     <style>
+
       .highlight {
         background: red;
       }
@@ -15,16 +17,32 @@
         top: 50px;
       }
       textarea {
-        height: 100%;
         width: 500px;
+        font-size: 50px;
+        font-style: italic;
+        background: inherit;
+        outline: none;
+        border: 0;
+        resize: none;
+        color: white;
       }
-      html,body {
+      html {
         height: 100%;
+      }
+      input {
+        font-size: 50;
+      }
+      body {
+        height: 100%;
+        background: #393937;
+        display: flex;
+       align-items: center;
+       justify-content: center;
       }
     </style>
   </head>
   <body>
-    <textarea>define([
+<!--     <textarea>define([
   "./var/arr",
   "./var/slice",
   "./var/concat",
@@ -117,7 +135,8 @@ jQuery.fn = jQuery.prototype = {
 }
 
 return jQuery;
-});</textarea>
+});</textarea> -->
+    <textarea class="paster" placeholder="Paste code now"></textarea>
     <menu label="edit">
       <button class="play">play</button>
     </menu>
