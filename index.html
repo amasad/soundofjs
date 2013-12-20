@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+      .highlight {
+        background: red;
+      }
+      .highlight-2 {
+        background: pink;
+      }
+      menu {
+        position: fixed;
+        right: 0;
+        top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <pre><code>define([
+  "./var/arr",
+  "./var/slice",
+  "./var/concat",
+  "./var/push",
+  "./var/indexOf",
+  "./var/class2type",
+  "./var/toString",
+  "./var/hasOwn",
+  "./var/trim",
+  "./var/support"
+], function( arr, slice, concat, push, indexOf, class2type, toString, hasOwn, trim, support ) {
+
+var
+  // Use the correct document accordingly with window argument (sandbox)
+  document = window.document,
+
+  // Map over jQuery in case of overwrite
+  _jQuery = window.jQuery,
+
+  // Map over the $ in case of overwrite
+  _$ = window.$,
+
+  version = "@VERSION",
+
+  // Define a local copy of jQuery
+  jQuery = function( selector, context ) {
+    // The jQuery object is actually just the init constructor 'enhanced'
+    // Need init if jQuery is called (just allow error to be thrown if not included)
+    return new jQuery.fn.init( selector, context );
+  },
+
+  // Matches dashed string for camelizing
+  rmsPrefix = /^-ms-/,
+  rdashAlpha = /-([\da-z])/gi,
+
+  // Used by jQuery.camelCase as callback to replace()
+  fcamelCase = function( all, letter ) {
+    return letter.toUpperCase();
+  };
+
+jQuery.fn = jQuery.prototype = {
+  // The current version of jQuery being used
+  jquery: version,
+
+  constructor: jQuery,
+
+  // Start with an empty selector
+  selector: "",
+
+  // The default length of a jQuery object is 0
+  length: 0,
+
+  toArray: function() {
+    return slice.call( this );
+  },
+
+  // Get the Nth element in the matched element set OR
+  // Get the whole matched element set as a clean array
+  get: function( num ) {
+    return num != null ?
+
+      // Return a 'clean' array
+      ( num < 0 ? this[ num + this.length ] : this[ num ] ) :
+
+      // Return just the object
+      slice.call( this );
+  },
+
+  // Take an array of elements and push it onto the stack
+  // (returning the new matched element set)
+  pushStack: function( elems ) {
+
+    // Build a new jQuery matched element set
+    var ret = jQuery.merge( this.constructor(), elems );
+
+    // Add the old object onto the stack (as a reference)
+    ret.prevObject = this;
+    ret.context = this.context;
+
+    // Return the newly-formed element set
+    return ret;
+  },
+
+  // Execute a callback for every element in the matched set.
+  // (You can seed the arguments with an array of args, but this is
+  // only used internally.)
+  each: function( callback, args ) {
+    return jQuery.each( this, callback, args );
+  },
+}
+
+return jQuery;
+});</code></pre>
+    <menu label="edit">
+      <button>play</button>
+    </menu>
+    <script src="howler.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>

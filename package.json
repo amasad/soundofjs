@@ -1,0 +1,16 @@
+{
+  "name": "soundofjs",
+  "version": "0.0.0",
+  "description": "Listen to your JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "amasad <amjad.masad@gmail.com>",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "recast": "~0.5.6",
+    "ast-types": "~0.3.11",
+    "jquery-browserify": "~1.8.1"
+  }
+}
