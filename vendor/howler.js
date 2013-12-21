@@ -1170,20 +1170,8 @@
 
   }
 
-  /**
-   * Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
-   */
-  if (typeof define === 'function' && define.amd) {
-    define(function() {
-      return {
-        Howler: Howler,
-        Howl: Howl
-      };
-    });
-  }
-  
   // define globally in case AMD is not available or available but not used
-  window.Howler = Howler;
-  window.Howl = Howl;
+  exports.Howler = Howler;
+  exports.Howl = Howl;
   
 })();

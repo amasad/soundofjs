@@ -404,3 +404,6 @@ if (Prism.languages.markup) {
   });
 }
 ;
+
+module.exports = Prism;
+
