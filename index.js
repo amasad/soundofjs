@@ -24,7 +24,7 @@ var path = null;
 
 function onPaste(code) {
   console.log(code)
-  var $code = $('<code/>');
+  var $code = $('<code/>', { class: 'language-javascript' });
   var $line = $('<div/>');
 
   code.split('\n').forEach(function (loc, n) {
@@ -33,12 +33,20 @@ function onPaste(code) {
         .clone()
         .addClass('loc-' + (n + 1))
         .addClass('loc')
-        .html(loc.split('').map(function (col, i) {
-          return $('<span/>', {class: 'col-' + i, text: col});
-        }))
+        .append(
+          (loc.length && loc.split('').map(function (col, i) {
+            return $('<span/>', {class: 'col-' + i}).append($('<span/>', { class: 'text', text: col }));
+          })) || "&nbsp;"
+        )
     );
   });
-  $textarea.replaceWith($code);
+
+  $textarea.replaceWith($('<pre/>').append($code).addClass('language-javascript'));
+
+  $highlighted = $('<code/>').text(code);
+  $pre = $('<pre/>').append($highlighted).addClass('highlighted-code').addClass('language-javascript')
+  $('body').append($pre);
+  Prism.highlightElement($highlighted[0], false);
 
   worker.onmessage = function (e) {
     path = e.data.path;

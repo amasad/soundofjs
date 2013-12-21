@@ -3,6 +3,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="prism.css" />
     <style>
 
       .highlight {
@@ -35,9 +36,12 @@
       body {
         height: 100%;
         background: #393937;
+      }
+      .container {
+        min-height: 100%;
         display: flex;
-       align-items: center;
-       justify-content: center;
+        align-items: center;
+        justify-content: center;
       }
     </style>
   </head>
@@ -136,10 +140,13 @@ jQuery.fn = jQuery.prototype = {
 
 return jQuery;
 });</textarea> -->
-    <textarea class="paster" placeholder="Paste code now"></textarea>
-    <menu label="edit">
-      <button class="play">play</button>
-    </menu>
+    <div class="container">
+      <textarea class="paster" placeholder="Paste code now"></textarea>
+      <menu label="edit">
+        <button class="play">play</button>
+      </menu>
+    </div>
+    <script src="prism.js"></script>
     <script src="howler.js"></script>
     <script src="bundle.js"></script>
   </body>
