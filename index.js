@@ -26,19 +26,21 @@ var path = null;
 
 function onPaste(code) {
   var $code = $('<code/>', { class: 'language-javascript' });
+  var $locs = {};
+  var $cols = {};
 
- var highlightedEl = $('<pre/>')
-    .append('<code/>')
-    .find('code')
-    .addClass('language-javascript')
-    .text(code)
-    .get(0);
+  var highlightedEl = $('<pre/>')
+      .append('<code/>')
+      .find('code')
+      .addClass('language-javascript')
+      .text(code)
+      .get(0);
 
   Prism.highlightElement(highlightedEl, false);
 
   var col = 0;
   $(highlightedEl).html().split('\n').forEach(function (loc, n) {
-    var col = 0;
+      var col = 0;
       var $div = $('<div/>')
         .html(loc || '&nbsp;')
         .addClass('loc-' + (n + 1))
@@ -61,35 +63,48 @@ function onPaste(code) {
         $el.before.apply(
           $el,
           chars.map(function (c) {
-            return $('<span/>', { class: 'col-' + (col++) }).text(c);
+            var $col = $('<span/>', { class: 'col-' + col }).text(c);
+            if (!$cols[n + 1]) {
+              $cols[n + 1] = {};
+            }
+            $cols[n + 1][col] = $col;
+            col++;
+            return $col;
           })
         );
         $el.remove();
       });
 
-    $code.append($div);
+      $locs[n + 1] = $div;
+      $code.append($div);
   });
 
   var $pre = $('<pre/>').append($code).addClass('highlighted-code').addClass('language-javascript');
 
 
   worker.onmessage = function (e) {
+    console.log('message');
     path = e.data.path;
     ast = e.data.ast;
-    path.forEach(function (n) {
-      var $start = $code.find('.loc-' + n.loc.start.line).find('.col-' + n.loc.start.column);
-      var $end = $code.find('.loc-' + n.loc.end.line).find('.col-' + n.loc.end.column);
+    console.profile('wat');
+    console.time('wat');
+    for (var i = 0, l = path.length; i < l; i++) {
+      n = path[i];
+      var $start = $cols[n.loc.start.line][n.loc.start.column];
+      var $end = $cols[n.loc.end.line][n.loc.end.column];
       var $next = $start;
 
       var col = n.loc.start.column;
       var line = n.loc.start.line;
       var endLine = n.loc.end.line;
       var endCol = n.loc.end.column;
+      var els = [];
       while ($next.length && line <= endLine && !(line === endLine && col >= endCol)) {
-        $next.addClass(n.type);
+        $next[0].classList.add(n.type);
         col++;
-        $tmp = $code.find('.loc-' + line + ' .col-' + col);
-        if ($tmp.length) {
+        var lineOfCols = $cols[line];
+        $tmp = lineOfCols && lineOfCols[col];
+        if ($tmp) {
           $next = $tmp;
         } else {
           line++;
@@ -97,7 +112,9 @@ function onPaste(code) {
           continue;
         }
       }
-    });
+    }
+    console.profileEnd('wat');
+    console.timeEnd('wat');
     $textarea.replaceWith($pre);
   };
 
