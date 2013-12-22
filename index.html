@@ -5,13 +5,38 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="vendor/prism.css" />
     <style>
-
+      .loc {
+        padding: 3px;
+      }
       .highlight {
-        background: red;
+        background: rgba(174, 129, 255, 0.54);
+        border-radius: 4px;
       }
       .highlight-2 {
-        background: pink;
+        -webkit-animation: highlight-node  0.3s ease-out;
+        animation: highlight-node  0.3s ease-out;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
       }
+
+      @-webkit-keyframes highlight-node {
+        25% {
+          text-shadow: 0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7;
+        }
+        60% {
+          text-shadow: 0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7;
+        }
+        100% {
+          text-shadow: 0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7;
+        }
+      }
+
+/*      [class*="col-"] {
+        transition: text-shadow 0.2s;
+      }*/
+
       menu {
         position: fixed;
         right: 0;
@@ -35,7 +60,7 @@
       }
       body {
         height: 100%;
-        background: #393937;
+        background: #171814;
       }
       .container {
         min-height: 100%;
