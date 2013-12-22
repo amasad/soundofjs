@@ -50,6 +50,7 @@ textarea {
   font: 100 20px/1.5 "Source Sans", sans-serif;
   color: white;
   text-align: center;
+  margin-top: -90px;
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -83,6 +84,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-flow: column;
+  flex-direction: column;
 }
 
 pre {
