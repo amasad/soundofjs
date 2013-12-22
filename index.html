@@ -41,6 +41,8 @@
         border: 0;
         resize: none;
         color: white;
+        width: 370px;
+        height: 63px;
       }
       html, body {
         height: 100%;
@@ -53,24 +55,30 @@
         background: #171814;
       }
       .container {
-        padding: 30px;
-        height: 100%;
+        padding: 15px;
+        height: calc(100% - 30px);
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-flow: column;
+        color: white;
       }
       pre {
         height: 100%;
         min-width: 600px;
         border-radius: 10px;
       }
+      .or {
+        font-style: italic;
+        font-size: 40px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <textarea class="paster" placeholder="Paste code now"></textarea>
-      <div>or</div>
-      <button>see an example</button>
+      <div class="or"><p>or</p></div>
+      <div class="button-container"><button>see an example</button></div>
     </div>
     <script src="bundle.js"></script>
   </body>
