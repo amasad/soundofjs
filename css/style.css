@@ -108,3 +108,7 @@ pre, code {
   position: relative;
   font-size: 0.85em;
 }
+
+.dg .fa {
+  margin-right: 10px;
+}
