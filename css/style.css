@@ -1,0 +1,110 @@
+@font-face {
+  font-family: StreetArt;
+  src: url(from_street_art.ttf);
+}
+
+.logo {
+  font-family: StreetArt;
+  color: rgb(174, 129, 255);
+  font-size: 50px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.loc {
+  padding: 3px;
+}
+
+.highlight {
+  background: rgba(174, 129, 255, 0.54);
+  border-radius: 4px;
+}
+
+.highlight-2 {
+  -webkit-animation: highlight-node  0.3s ease-out;
+  animation: highlight-node  0.3s ease-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes highlight-node {
+  25% {
+    text-shadow: 0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7;
+  }
+  60% {
+    text-shadow: 0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7;
+  }
+  100% {
+    text-shadow: 0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7,0 0 0.4em #8F7;
+  }
+}
+
+textarea {
+  font-size: 50px;
+  background: inherit;
+  outline: none;
+  border: 0;
+  resize: none;
+  width: 450px;
+  height: 30px;
+  margin-top: -60px;
+  font: 100 20px/1.5 "Source Sans", sans-serif;
+  color: white;
+  text-align: center;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: white;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: white;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: white;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #171814;
+  font: 100 20px/1.5 "Source Sans", sans-serif;
+  color:white;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"100"%20height%3D"100"%20fill%3D"rgba(0%2C0%2C0%2C.2)">%0D%0A<polygon%20points%3D"0%2C50%2050%2C0%200%2C0"%20%2F>%0D%0A<polygon%20points%3D"0%2C100%2050%2C100%20100%2C50%20100%2C0"%20%2F>%0D%0A<%2Fsvg>');
+}
+
+.container {
+  padding: 15px;
+  height: calc(100% - 115px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+pre {
+  height: 100%;
+  min-width: 600px;
+  border-radius: 10px;
+  background: none!important;
+}
+
+.see-example a {
+  color: #5790EF;
+  text-decoration: underline;
+}
+
+.or {
+  font-style: italic;
+}
+
+pre, code {
+  position: relative;
+  font-size: 0.85em;
+}
