@@ -1,6 +1,6 @@
 @font-face {
   font-family: StreetArt;
-  src: url(from_street_art.ttf);
+  src: url(fonts/from_street_art.ttf);
 }
 
 .logo {
@@ -21,15 +21,12 @@
 }
 
 .highlight-2 {
-  -webkit-animation: highlight-node  0.3s ease-out;
   animation: highlight-node  0.3s ease-out;
-  -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes highlight-node {
+@keyframes highlight-node {
   25% {
     text-shadow: 0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7,0 0 2.5em #8F7;
   }
@@ -121,10 +118,25 @@ menu {
   font-size: 45px;
   color: white;
 }
+
 menu a {
   display: block;
   color: white;
 }
+
 menu a:hover {
   color: #5790EF;
+}
+
+@media all and (max-width: 520px) {
+  menu {
+    display: none;
+  }
+  pre {
+    width: 100%;
+    min-width: 0;
+  }
+  .dg {
+    zoom: 1.1;
+  }
 }
