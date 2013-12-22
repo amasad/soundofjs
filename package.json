@@ -9,8 +9,8 @@
   "author": "amasad <amjad.masad@gmail.com>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "recast": "~0.5.6",
-    "ast-types": "~0.3.11",
-    "jquery-browserify": "~1.8.1"
+    "ast-types": "~0.3.12",
+    "jquery-browserify": "~1.8.1",
+    "esprima": "~1.0.4"
   }
 }
