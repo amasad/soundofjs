@@ -6,10 +6,21 @@
 .logo {
   font-family: StreetArt;
   color: rgb(174, 129, 255);
-  font-size: 50px;
+  font-size: 60px;
   text-align: center;
   margin-top: 30px;
-  height: 60px;
+  height: 70px;
+}
+
+.logo p {
+  margin: 0;
+}
+
+@media all and (max-width: 520px) {
+  .logo {
+    font-size: 40px;
+    height: 50px;
+  }
 }
 
 .loc {
@@ -96,9 +107,9 @@ body {
 
 .share li {
   display: inline-block;
-  padding-left: 5px;
-  padding-right: 5px;
-  width:80px;
+  border: none;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .share li:nth-child(1) {
@@ -114,13 +125,17 @@ body {
 }
 
 .fb-share-button {
-  margin-top: -20px;
-  vertical-align: middle;
+  height: 20px;
+}
+
+.fb-share-button > span {
+  vertical-align: middle!important;
+  display: inline!important;
 }
 
 .container {
   padding: 15px;
-  height: calc(100% - 210px);
+  height: calc(100% - 179px);
   display: flex;
   align-items: center;
   justify-content: center;
