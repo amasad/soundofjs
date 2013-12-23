@@ -21,6 +21,7 @@ minify:
 	@make build
 	@echo minifying
 	@uglifyjs bundle.js -o bundle.js
+	@uglifyjs worker-parser-bundle.js -o worker-parser-bundle.js
 	@cleancss -o bundle.css bundle.css
 
 clean:
