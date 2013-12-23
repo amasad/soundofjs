@@ -131,6 +131,7 @@ body {
 pre {
   height: 100%;
   min-width: 600px;
+  max-width: 100%;
   border-radius: 10px;
   background: none!important;
 }
