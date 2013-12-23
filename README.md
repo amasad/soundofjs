@@ -1,7 +1,7 @@
 soundofjs
 =========
 
-Listen to your JavaScript code on an 808 drum machine
+Listen to your JavaScript code on an 808 drum machine http://soundofjs.com
 
 ## Development
 
