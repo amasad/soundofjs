@@ -17,6 +17,12 @@ build: lib vendor
 	@cat vendor/prism.css >> $(tmp3)
 	@mv $(tmp3) bundle.css
 
+minify:
+	@make build
+	@echo minifying
+	@uglifyjs bundle.js -o bundle.js
+	@cleancss -o bundle.css bundle.css
+
 clean:
 	@echo cleaning
 	rm *bundle.js
